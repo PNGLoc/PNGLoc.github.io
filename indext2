@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANH YÊU EM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ffd1ff);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 10vw; /* Kích thước chữ thay đổi theo kích thước màn hình */
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 105, 180, 0.5);
+            animation: glowing 3s ease-in-out infinite alternate;
+            letter-spacing: 1vw;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+        }
+
+        h1::before {
+            content: 'ANH YÊU EM';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: #ff69b4;
+            z-index: -1;
+            transform: rotateX(30deg) translateZ(-30px);
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+
+        /* Hiệu ứng nền động */
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Hiệu ứng lung linh của chữ */
+        @keyframes glowing {
+            0% {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 105, 180, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 105, 180, 1);
+            }
+        }
+
+        /* Chuyển động xoay nhẹ khi di chuyển trên di động */
+        @media (max-width: 768px) {
+            body {
+                perspective: 500px;
+            }
+            h1 {
+                font-size: 15vw; /* Chữ lớn hơn trên màn hình nhỏ */
+                transform: rotateX(10deg) rotateY(10deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="love-text">ANH YÊU EM</h1>
+
+    <script>
+        // Tương tác với chuột trên desktop
+        document.addEventListener('mousemove', function(e) {
+            if (window.innerWidth > 768) { // Kiểm tra nếu không phải thiết bị di động
+                let loveText = document.getElementById('love-text');
+                let x = (window.innerWidth / 2 - e.pageX) / 50;
+                let y = (window.innerHeight / 2 - e.pageY) / 50;
+                loveText.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            }
+        });
+
+        // Thay đổi màu chữ khi click
+        document.getElementById('love-text').addEventListener('click', function() {
+            this.style.color = this.style.color === 'white' ? '#ff69b4' : 'white';
+        });
+
+        // Hiệu ứng xoay nhẹ khi nghiêng thiết bị di động
+        window.addEventListener('deviceorientation', function(event) {
+            let x = event.beta / 5;  // Nghiêng theo chiều dọc
+            let y = event.gamma / 5; // Nghiêng theo chiều ngang
+            let loveText = document.getElementById('love-text');
+            loveText.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
+        });
+    </script>
+
+</body>
+</html>
