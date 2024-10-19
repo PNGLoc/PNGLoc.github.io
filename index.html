@@ -3,104 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lời Chúc 20/10 Dành Cho Mẹ</title>
+    <title>Chúc Em Ngủ Ngon</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom, #f9c4d2, #ffe6f0);
+            background-color: #f0f8ff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            text-align: center;
+            overflow: hidden;
         }
 
-        .card {
+        .container {
             background-color: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         h1 {
-            font-size: 2em;
-            color: #e91e63;
-        }
-
-        p {
-            font-size: 1.2em;
-            color: #333;
+            color: #4682b4;
             margin-bottom: 20px;
+            animation: zoomIn 1s;
         }
 
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            border: none;
-            border-radius: 25px;
-            background-color: #e91e63;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #d81b60;
-        }
-
-        .message {
-            margin-top: 20px;
-            font-size: 1.5em;
-            color: #e91e63;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-
-        .message.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Thêm một chút hiệu ứng động */
-        @keyframes pulse {
+        @keyframes zoomIn {
             0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
+                transform: scale(0.8);
+                opacity: 0;
             }
             100% {
                 transform: scale(1);
+                opacity: 1;
             }
         }
 
-        h1 {
-            animation: pulse 2s infinite;
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>Chúc mừng 20/10 Mẹ yêu!</h1>
-        <p>Mẹ là người phụ nữ tuyệt vời nhất trong cuộc đời con. Cảm ơn mẹ vì tất cả tình yêu và sự hi sinh của mẹ.</p>
-        <button id="revealMessageBtn">Bấm để nhận lời chúc đặc biệt!</button>
-        <div class="message" id="specialMessage">
-            Con yêu mẹ rất nhiều! Chúc mẹ luôn mạnh khỏe, hạnh phúc và vui vẻ mỗi ngày!
-        </div>
+    <div class="container">
+        <h1>Chúc em ngủ ngon!</h1>
+        <img src="https://tenor.com/vi/view/nh%C3%A0m-nhang-nh%E1%BB%93-gif-9559588401519843881" alt="Chúc em ngủ ngon">
+        <p>Mong em có những giấc mơ đẹp và ngọt ngào!</p>
     </div>
-
-    <script>
-        const button = document.getElementById('revealMessageBtn');
-        const message = document.getElementById('specialMessage');
-
-        button.addEventListener('click', function() {
-            message.classList.add('show');
-        });
-    </script>
 
 </body>
 </html>
